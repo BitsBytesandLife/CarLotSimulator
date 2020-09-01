@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace CarLotSimulator
 {
@@ -8,6 +9,8 @@ namespace CarLotSimulator
         {
             //TODO
 
+            CarLot lot = new CarLot();
+
             //Create a seperate class file called Car
             //Car shall have the following properties: Year, Make, Model, EngineNoise, HonkNoise, IsDriveable
             //Car shall have the following methods: MakeEngineNoise(), MakeHonkNoise()
@@ -16,7 +19,35 @@ namespace CarLotSimulator
 
             //Now that the Car class is created we can instanciate 3 new cars
             //Set the properties for each of the cars
+            var carOne = new Car();
+            carOne.Make = "Ford";
+            carOne.Model = "Escape";
+            carOne.Year = 2020;
+            carOne.IsDriveable = true;
+            carOne.HonkNoise = "beep";
+            carOne.EngineNoise = "brum - brum";
+
+            Car carTwo = new Car { Make = "Chevrolet", Model = "Impala", Year = 2020, 
+                                   EngineNoise = "Vroom", HonkNoise = "beep beep beep", IsDriveable = true };
+
+            Car carThree = new Car {Make= "Nissan", Model = "Sentra", Year=2020,EngineNoise="Vroom Vroom",HonkNoise="BEEP BEEP", IsDriveable=true};
+            
             //Call each of the methods for each car
+            carOne.MakeEngineNoise(carOne.EngineNoise);
+            carOne.MakeHonkNoise(carOne.HonkNoise);
+
+            lot.carLot.Add(carOne);
+
+            carTwo.MakeEngineNoise(carTwo.EngineNoise);
+            carTwo.MakeHonkNoise(carTwo.HonkNoise);
+
+            lot.carLot.Add(carTwo);
+
+            carThree.MakeEngineNoise(carThree.EngineNoise);
+            carThree.MakeHonkNoise(carThree.HonkNoise);
+
+            lot.carLot.Add(carThree);
+
 
             //*************BONUS*************//
 
@@ -28,6 +59,13 @@ namespace CarLotSimulator
             //It should have at least one property: a List of cars
             //Instanciate the a Carlot at the beginning of the program and as you create a car add the car to the list.
             //At the end iterate through the list printing each of car's Year, Make, and Model to the console
+
+            foreach (var car in lot.carLot)
+            {
+                Console.WriteLine("************************************");
+                Console.WriteLine($"{car.Make} {car.Model} {car.Year}");
+                Console.WriteLine("************************************");
+            }
         }
     }
 }
